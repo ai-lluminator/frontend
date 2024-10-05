@@ -1,37 +1,15 @@
 "use client";
 
-import { useEffect, useState } from 'react';
 import Head from 'next/head';
-import Image from 'next/image';
 import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, Tooltip, Legend } from 'chart.js';
-import { Bar } from 'react-chartjs-2';
 import '@/app/ui/global.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import Image from 'next/image';
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
 const HomePage = () => {
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const [navOpen, setNavOpen] = useState(false);
-
-  const handleScroll = () => {
-    const position = window.scrollY;
-    setScrollPosition(position);
-  };
-
-  const toggleNav = () => {
-    setNavOpen(!navOpen);
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    // Cleanup
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
 
   return (
     <div className="leading-normal tracking-normal bg-custom-gradient text-white">
@@ -97,12 +75,26 @@ const HomePage = () => {
               </p>
             </div>
             <div className="w-full sm:w-1/2 p-6 flex items-center">
-              <img className="sm:h-64 mx-auto" src="images/RAG.png" alt="RAG Model" />
+              <div className="sm:h-64 mx-auto">
+                <Image
+                  src="/images/RAG.png"
+                  alt="RAG Model"
+                  width={500}
+                  height={500}
+                />
+              </div>
             </div>
           </div>
           <div className="flex flex-wrap flex-col-reverse sm:flex-row">
             <div className="w-full sm:w-1/2 p-6 flex items-center">
-              <img className="sm:h-64 mx-auto" src="images/TrainingLoop.png" alt="Training Loop" />
+              <div className="sm:h-64 mx-auto">
+              <Image
+                src="/images/TrainingLoop.png"
+                alt="Training Loop"
+                width={500}
+                height={500}
+              />
+              </div>
             </div>
             <div className="w-full sm:w-1/2 p-6 mt-6">
               <div className="align-middle">

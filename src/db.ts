@@ -10,4 +10,4 @@ const pool = new Pool({
 });
 
 // Function to execute queries
-export const query = (text: string, params?: any[]) => pool.query(text, params);
+export const query = (text: string, params?: (string | null)[]) => pool.query(text, params);

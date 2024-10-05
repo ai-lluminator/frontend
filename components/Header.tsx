@@ -35,7 +35,6 @@ const Header = () => {
       ? 'bg-gradient-to-r from-purple-600 to-blue-400 text-white'
       : 'bg-white text-gray-800';
   const toggleColourClasses = scrollPosition > 10 ? 'text-gray-800' : 'text-white';
-  const navContentClasses = navOpen ? '' : 'hidden';
 
   return (
     <nav

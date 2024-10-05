@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import React from 'react';
 import '@/app/ui/global.css';
 
 import Header from '@/components/Header';

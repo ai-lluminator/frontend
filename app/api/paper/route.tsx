@@ -1,15 +1,27 @@
 import { query } from '../../../src/db';  // Assuming your db.ts is in the src folder
+import { QueryResult } from 'pg'; // Assuming you're using the pg library
+
+// Define the expected type of a row in the paper_access table
+interface PaperAccessRow {
+  paper: string;
+  user_id: string;
+  timestamp: string; // or whatever type your 'timestamp' column uses
+}
+
+// Define the PostgresError interface
+interface PostgresError extends Error {
+  code?: string;
+}
 
 // Helper function to attempt inserting a paper with a generated id
-async function insertPaperWithUniqueId(paper: string, user_id: string, date: string) {
+async function insertPaperWithUniqueId(paper: string, user_id: string, date: string): Promise<PaperAccessRow> {
   let success = false;
-  let result: any;
+  let result: QueryResult<PaperAccessRow> | null = null;
 
   const formattedDate = date ? new Date(parseInt(date, 10) * 1000).toISOString() : null;
 
   // Try to insert the paper with a new unique ID up to 5 times
   for (let attempt = 0; attempt < 5; attempt++) {
-
     try {
       // If date is provided, insert it, otherwise use DEFAULT for current timestamp
       const insertQuery = 'INSERT INTO paper_access (paper, user_id, timestamp) VALUES ($1, $2, $3) RETURNING *';
@@ -19,16 +31,19 @@ async function insertPaperWithUniqueId(paper: string, user_id: string, date: str
 
       success = true; // If the insertion succeeds, break the loop
       break;
-    } catch (error: any) {
-      // Check if the error is related to a unique violation (duplicate id)
-      if (error.code !== '23505') { // 23505 is the Postgres error code for unique constraint violation
+    } catch (error: unknown) {
+      // Check if the error is a PostgresError and check the code
+      const pgError = error as PostgresError;
+      if (pgError.code === '23505') {
+        // If the error is a unique violation (duplicate id), continue to retry
+        continue;
+      } else {
         throw error; // If it's another error, rethrow it
       }
-      // If the id was a duplicate, the loop will try again with a new id
     }
   }
 
-  if (!success) {
+  if (!success || result === null) {
     throw new Error('Failed to generate a unique ID for the paper after multiple attempts.');
   }
 

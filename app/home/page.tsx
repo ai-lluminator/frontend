@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, Tooltip, Legend } from 'chart.js';
@@ -12,34 +11,6 @@ import Footer from '@/components/Footer';
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
 const HomePage = () => {
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const [navOpen, setNavOpen] = useState(false);
-
-  const handleScroll = () => {
-    const position = window.scrollY;
-    setScrollPosition(position);
-  };
-
-  const toggleNav = () => {
-    setNavOpen(!navOpen);
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    // Cleanup
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  const navClasses = scrollPosition > 10 ? 'bg-white shadow' : '';
-  const navActionClasses =
-    scrollPosition > 10
-      ? 'bg-gradient-to-r from-purple-600 to-blue-400 text-white'
-      : 'bg-white text-gray-800';
-  const toggleColourClasses = scrollPosition > 10 ? 'text-gray-800' : 'text-white';
-  const navContentClasses = navOpen ? '' : 'hidden';
 
   const data = {
     labels: [
@@ -189,8 +160,8 @@ const HomePage = () => {
                   <br />
                   <br />
                   And the best part of this technology? Contrary to filtering by key words,
-                  you can simply use a prompt like "I am interested in the latest research
-                  on quantum computing" to get the most relevant papers, without having to
+                  you can simply use a prompt like &quot;I am interested in the latest research
+                  on quantum computing&quot; to get the most relevant papers, without having to
                   think about which keyword best suits your interest.
                 </p>
               </div>
@@ -232,7 +203,7 @@ const HomePage = () => {
       {/* Call to Action */}
       <section className="container mx-auto text-center py-6 mb-12">
         <h2 className="w-full my-2 text-5xl font-bold leading-tight text-center text-white">
-          Can't find your papers?
+          Can&apos;t find your papers?
         </h2>
         <div className="w-full mb-4">
           <div className="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
