@@ -16,3 +16,8 @@ CREATE TABLE paper_access (
     user_id VARCHAR(50) NOT NULL,
     timestamp TIMESTAMP NOT NULL
 );
+
+CREATE TABLE paper_url (
+    paper VARCHAR(50) NOT NULL,
+    url VARCHAR(50) NOT NULL
+);

@@ -1,57 +1,10 @@
-import { query } from '../../../src/db';  // Assuming your db.ts is in the src folder
-import { QueryResult } from 'pg'; // Assuming you're using the pg library
+// app/api/paper/route.ts
 
-// Define the expected type of a row in the paper_access table
-interface PaperAccessRow {
-  paper: string;
-  user_id: string;
-  timestamp: string; // or whatever type your 'timestamp' column uses
-}
+import { query } from '@/src/db';  // Adjust the path to your db module
+import { NextResponse } from 'next/server';
 
-// Define the PostgresError interface
-interface PostgresError extends Error {
-  code?: string;
-}
-
-// Helper function to attempt inserting a paper with a generated id
-async function insertPaperWithUniqueId(paper: string, user_id: string, date: string): Promise<PaperAccessRow> {
-  let success = false;
-  let result: QueryResult<PaperAccessRow> | null = null;
-
-  const formattedDate = date ? new Date(parseInt(date, 10) * 1000).toISOString() : null;
-
-  // Try to insert the paper with a new unique ID up to 5 times
-  for (let attempt = 0; attempt < 5; attempt++) {
-    try {
-      // If date is provided, insert it, otherwise use DEFAULT for current timestamp
-      const insertQuery = 'INSERT INTO paper_access (paper, user_id, timestamp) VALUES ($1, $2, $3) RETURNING *';
-      const params = [paper, user_id, formattedDate];
-
-      result = await query(insertQuery, params);
-
-      success = true; // If the insertion succeeds, break the loop
-      break;
-    } catch (error: unknown) {
-      // Check if the error is a PostgresError and check the code
-      const pgError = error as PostgresError;
-      if (pgError.code === '23505') {
-        // If the error is a unique violation (duplicate id), continue to retry
-        continue;
-      } else {
-        throw error; // If it's another error, rethrow it
-      }
-    }
-  }
-
-  if (!success || result === null) {
-    throw new Error('Failed to generate a unique ID for the paper after multiple attempts.');
-  }
-
-  return result.rows[0]; // Return the inserted paper record
-}
-
-// Handle POST requests to /api/paper
-export async function POST(req: Request) {
+// Handle GET requests to /api/paper
+export async function GET(req: Request) {
   try {
     // Extract query parameters from the URL
     const url = new URL(req.url);
@@ -59,23 +12,46 @@ export async function POST(req: Request) {
     const user_id = url.searchParams.get('p');
 
     // Use current timestamp if date is not provided
-    const date = url.searchParams.get('date') || new Date().toISOString();
-
-    console.log('date', date);
+    const dateParam = url.searchParams.get('date');
+    const date = dateParam ? new Date(parseInt(dateParam, 10) * 1000) : new Date();
 
     // Validate input
     if (!paper || !user_id) {
-      return new Response(JSON.stringify({ error: 'Paper and user_id are required' }), { status: 400 });
+      return new NextResponse(
+        JSON.stringify({ error: 'Paper and user_id are required' }),
+        { status: 400, headers: { 'Content-Type': 'application/json' } }
+      );
     }
 
-    // Insert the paper with the formatted date into the database
-    const paper_response = await insertPaperWithUniqueId(paper, user_id, date);
+    // First, check if the paper exists in the paper_url table and get the associated URL
+    const checkQuery = 'SELECT url FROM paper_url WHERE paper = $1';
+    const checkResult = await query(checkQuery, [paper]);
 
-    // Return the newly created paper as a JSON response
-    return new Response(JSON.stringify(paper_response), { status: 201 });
+    if (checkResult.rows.length === 0) {
+      // Paper does not exist in paper_url table
+      return new NextResponse(
+        JSON.stringify({ error: 'Paper not found in paper_url table' }),
+        { status: 404, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
+
+    // Extract the URL from the query result
+    const paperUrl = checkResult.rows[0].url;
+
+    // Optionally, insert into paper_access table for logging purposes
+    const insertQuery = `
+      INSERT INTO paper_access (paper, user_id, timestamp)
+      VALUES ($1, $2, $3)
+    `;
+    await query(insertQuery, [paper, user_id, date.toISOString()]);
+
+    // Redirect the user to the URL associated with the paper
+    return NextResponse.redirect(paperUrl);
   } catch (error) {
-    console.error('Error creating paper:', error);
-    return new Response(JSON.stringify({ error: 'Internal Server Error' }), { status: 500 });
+    console.error('Error processing request:', error);
+    return new NextResponse(
+      JSON.stringify({ error: 'Internal Server Error' }),
+      { status: 500, headers: { 'Content-Type': 'application/json' } }
+    );
   }
 }
-
