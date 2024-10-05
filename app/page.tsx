@@ -15,6 +15,7 @@ const RedirectToLogin = () => {
 
   return (
     <div>
+    <title>Redirecting...</title>
       <p>Redirecting to login...</p>
       <p>
         If you are not redirected, click <Link href="/home">here</Link>.

@@ -14,6 +14,8 @@ const AboutPage: React.FC = () => {
       className="leading-normal tracking-normal text-white gradient"
       style={{ fontFamily: "'Source Sans Pro', sans-serif" }}
     >
+
+      <title>AIlluminator - About us</title>
       {/* Navbar */}
       <Header />
 

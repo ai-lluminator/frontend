@@ -37,6 +37,7 @@ const HomePage = () => {
       className="leading-normal tracking-normal text-white gradient"
       style={{ fontFamily: "'Source Sans Pro', sans-serif" }}
       >
+      <title>AIluminator - Homepage</title>
 
       {/* Navigation */}
       <Header />

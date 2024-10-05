@@ -13,6 +13,8 @@ const TechPage = () => {
       style={{ fontFamily: "'Source Sans Pro', sans-serif" }}
       >
 
+      <title>AIlluminator - Technology</title>
+
       {/* Navigation */}
       <Header />
 
