@@ -17,8 +17,6 @@ services:
   web:
     build:
       context: .
-    ports:
-      - "3000:3000"
     depends_on:
       - db
     environment:
@@ -29,6 +27,21 @@ services:
     networks:
       - ailluminator
     restart: always
+    expose:
+      - "3000"
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"    # HTTP
+      # - "443:443"  # HTTPS
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf  # Use the custom Nginx config file
+    depends_on:
+      - web
+    networks:
+      - ailluminator
+
 
 volumes:
   db_data:
