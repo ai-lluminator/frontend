@@ -1,25 +1,17 @@
 "use client";
 
-import Head from 'next/head';
-import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, Tooltip, Legend } from 'chart.js';
 import '@/app/ui/global.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
 
-ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
-
-const HomePage = () => {
+const TechPage = () => {
 
   return (
-    <div className="leading-normal tracking-normal bg-custom-gradient text-white">
-      <Head>
-        <title>AIluminator - Tracking Scientific Literature using AI</title>
-        <meta name="description" content="Simple landing page" />
-        <meta name="keywords" content="" />
-        <meta name="author" content="" />
-        {/* Tailwind CSS is assumed to be set up */}
-      </Head>
+    <div 
+      className="leading-normal tracking-normal text-white gradient"
+      style={{ fontFamily: "'Source Sans Pro', sans-serif" }}
+      >
 
       {/* Navigation */}
       <Header />
@@ -35,7 +27,14 @@ const HomePage = () => {
           </div>
           {/* Right Column */}
           <div className="w-full md:w-3/5 py-6 flex justify-end">
-            <img className="md:w-3/5 z-50" src="images/AI-gears.png" alt="AI Gears" />
+            <div className="md:w-3/5 z-50">
+              <Image
+                src="/images/ai-gears.png"
+                alt="AI Gears"
+                width={500}
+                height={500}
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -118,4 +117,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default TechPage;

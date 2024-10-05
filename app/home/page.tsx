@@ -1,6 +1,5 @@
 "use client";
 
-import Head from 'next/head';
 import Image from 'next/image';
 import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, Tooltip, Legend } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
@@ -34,14 +33,10 @@ const HomePage = () => {
   };
 
   return (
-    <div className="leading-normal tracking-normal bg-custom-gradient text-white">
-      <Head>
-        <title>AIluminator - Tracking Scientific Literature using AI</title>
-        <meta name="description" content="Simple landing page" />
-        <meta name="keywords" content="" />
-        <meta name="author" content="" />
-        {/* Tailwind CSS is assumed to be set up */}
-      </Head>
+    <div 
+      className="leading-normal tracking-normal text-white gradient"
+      style={{ fontFamily: "'Source Sans Pro', sans-serif" }}
+      >
 
       {/* Navigation */}
       <Header />

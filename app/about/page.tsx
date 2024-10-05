@@ -1,8 +1,12 @@
+"use client";
+
 import React from 'react';
 import '@/app/ui/global.css';
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+
+import Image from 'next/image';
 
 const AboutPage: React.FC = () => {
   return (
@@ -18,17 +22,20 @@ const AboutPage: React.FC = () => {
         <div className="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
           {/* Left Column */}
           <div className="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
-            <p className="uppercase tracking-loose w-full">
-              Tracking your scientific niche?
-            </p>
-            <h1 className="my-4 text-5xl font-bold leading-tight">
-              AI/lluminator
-            </h1>
+            <p className="uppercase tracking-loose w-full">Tracking your scientific niche?</p>
+            <h1 className="my-4 text-5xl font-bold leading-tight">AI/lluminator</h1>
             <p className="leading-normal text-2xl mb-8">About us</p>
           </div>
           {/* Right Column */}
           <div className="w-full md:w-3/5 py-6 flex justify-end">
-            <img className="md:w-3/5 z-50" src="images/AI-gears.png" alt="AI Gears" />
+            <div className="md:w-3/5 z-50">
+              <Image
+                src="/images/ai-gears.png"
+                alt="AI Gears"
+                width={500}
+                height={500}
+              />
+            </div>
           </div>
         </div>
       </div>
