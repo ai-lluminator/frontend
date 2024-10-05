@@ -8,9 +8,11 @@ services:
     volumes:
       - ./database_init/init.sql:/docker-entrypoint-initdb.d/init.sql
       - db_data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
+    # ports:
+    #   - "5432:5432"
     restart: always
+    networks:
+      - ailluminator
 
   web:
     build:
@@ -23,7 +25,14 @@ services:
       DATABASE_HOST: db
       DATABASE_USER: Ailluminator
       DATABASE_PASSWORD: Avatar30.11
-      DATABASE_NAME: mydb
+      DATABASE_NAME: papers
+    networks:
+      - ailluminator
+    restart: always
 
 volumes:
   db_data:
+
+networks:
+  ailluminator:
+    name: ailluminator
