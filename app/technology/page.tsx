@@ -8,10 +8,10 @@ import Image from 'next/image';
 const TechPage = () => {
 
   return (
-    <div 
+    <div
       className="leading-normal tracking-normal text-white gradient"
       style={{ fontFamily: "'Source Sans Pro', sans-serif" }}
-      >
+    >
 
       <title>AIlluminator - Technology</title>
 
@@ -20,7 +20,7 @@ const TechPage = () => {
 
       {/* Hero Section */}
       <div className="pt-24">
-        <div className="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+        <div className="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center max-w-screen-lg">
           {/* Left Column */}
           <div className="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
             <p className="uppercase tracking-loose w-full">Tracking your scientific niche?</p>
@@ -89,12 +89,12 @@ const TechPage = () => {
           <div className="flex flex-wrap flex-col-reverse sm:flex-row">
             <div className="w-full sm:w-1/2 p-6 flex items-center">
               <div className="sm:h-64 mx-auto">
-              <Image
-                src="/images/TrainingLoop.png"
-                alt="Training Loop"
-                width={500}
-                height={500}
-              />
+                <Image
+                  src="/images/TrainingLoop.png"
+                  alt="Training Loop"
+                  width={500}
+                  height={500}
+                />
               </div>
             </div>
             <div className="w-full sm:w-1/2 p-6 mt-6">

@@ -21,7 +21,7 @@ const AboutPage: React.FC = () => {
 
       {/* Hero Section */}
       <div className="pt-24">
-        <div className="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+        <div className="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center max-w-screen-lg">
           {/* Left Column */}
           <div className="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
             <p className="uppercase tracking-loose w-full">Tracking your scientific niche?</p>
@@ -68,8 +68,8 @@ const AboutPage: React.FC = () => {
           <div className="flex flex-wrap -mx-3 items-stretch">
             {/* Cornelius Wolff */}
             <div className="w-full md:w-1/2 px-3 mb-6">
-              <div className="rounded overflow-hidden shadow-lg p-6 flex flex-col">
-                <div className="text-center font-bold text-xl mb-2 text-gray-800">
+              <div className="rounded overflow-hidden shadow-sm border border-gray-100 p-6 flex flex-col">
+                <div className="font-bold text-xl mb-2 text-gray-800">
                   Cornelius Wolff
                 </div>
                 <div className="flex flex-grow">
@@ -81,11 +81,11 @@ const AboutPage: React.FC = () => {
                     />
                   </div>
                   <div className="flex-grow p-1">
-                    <p className="text-gray-700 text-base">
-                      - Head of this fun little project<br />
-                      - AI developer at DFKI SEE<br />
-                      - Cognitive scientist<br />
-                    </p>
+                    <ul className='list-disc text-gray-700 text-base pl-5 m-0'>
+                      <li>Head of this fun little project</li>
+                      <li>AI developer at DFKI SEE</li>
+                      <li>Cognitive scientist</li>
+                    </ul>
                   </div>
                 </div>
                 <div className="text-blue-600 flex gap-2 flex-wrap">
@@ -104,8 +104,8 @@ const AboutPage: React.FC = () => {
 
             {/* Tom Härter */}
             <div className="w-full md:w-1/2 px-3 mb-6">
-              <div className="rounded overflow-hidden shadow-lg p-6 flex flex-col">
-                <div className="text-center font-bold text-xl mb-2 text-gray-800">
+              <div className="rounded overflow-hidden shadow-sm border border-gray-100 p-6 flex flex-col">
+                <div className="font-bold text-xl mb-2 text-gray-800">
                   Tom Härter
                 </div>
                 <div className="flex flex-grow">
@@ -117,11 +117,11 @@ const AboutPage: React.FC = () => {
                     />
                   </div>
                   <div className="flex-grow p-1">
-                    <p className="text-gray-700 text-base">
-                      - Front-end and Deployment wizard<br />
-                      - Founder of Dokedu<br />
-                      - Cognitive scientist<br />
-                    </p>
+                    <ul className='list-disc text-gray-700 text-base pl-5 m-0'>
+                      <li>Front-end and Deployment wizard</li>
+                      <li>Founder of Dokedu</li>
+                      <li>Cognitive scientist</li>
+                    </ul>
                   </div>
                 </div>
                 <div className="text-blue-600 flex gap-2 flex-wrap">

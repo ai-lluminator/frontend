@@ -6,7 +6,7 @@ export default function Header() {
 
   return (
     <header className="border-b relative z-50">
-      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+      <div className="container mx-auto px-4 py-4 flex items-center justify-between max-w-screen-lg">
         <Link href="/" className="text-2xl font-bold">
           AI/lluminator
         </Link>
@@ -17,15 +17,12 @@ export default function Header() {
           <Link href="/technology" className="text-sm font-medium hover:underline">
             Technology
           </Link>
-          <Link href="/how-to" className="text-sm font-medium hover:underline">
-            How to use
-          </Link>
           <Link href="/about" className="text-sm font-medium hover:underline">
             About us
           </Link>
         </nav>
         <div className="flex items-center space-x-4">
-          <a href="#" className="hidden md:inline-flex px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
+          <a href="#" className="hidden md:inline-flex px-4 py-2 text-sm font-medium text-gray-900 bg-white rounded-md hover:bg-gray-50">
             Open Telegram bot
           </a>
           <button
@@ -57,7 +54,7 @@ export default function Header() {
             <Link href="/about" className="text-sm font-medium hover:underline">
               About us
             </Link>
-            <a href="#" className="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-300 rounded-md hover:bg-gray-50 text-center">
+            <a href="#" className="px-4 py-2 text-sm font-medium text-gray-900 bg-white rounded-md hover:bg-gray-50 text-center">
               Open Telegram bot
             </a>
           </nav>
