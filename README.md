@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI/lluminator
 
-## Getting Started
+## API Documentation
 
-First, run the development server:
+### Papers
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```text
+# GET /api/papers
+
+// Headers
+Authorization=TOKEN
+
+// Response
+{ data: [{ id: int, title, summary, paper_url, created_at }]}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+```text
+# POST /api/papers
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+// Headers
+Authorization=TOKEN
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+// Body
+{ paper_url: string, title: string | null, summary: string | null }
 
-## Learn More
+// Response
+{ data: [{ id: int, title, summary, paper_url, created_at }]}
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Links
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```text
+# GET /api/links
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+// Headers
+Authorization=TOKEN
 
-## Deploy on Vercel
+// Response
+{ data: [{ id, public_id, paper_id, user_id, prompt_id }]}
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```text
+# POST /api/links
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+// Headers
+Authorization=TOKEN
+
+// Body
+{ id, paper_id: int, user_id: int, prompt_id: int, created_at, public_url }
+
+// Response
+{ data: { id, public_id, paper_id, user_id, prompt_id }}
+```
+
