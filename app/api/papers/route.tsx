@@ -5,8 +5,6 @@ import { z } from 'zod';
 // zod schema for the request body
 const paperSchema = z.object({
   paper_url: z.string().url(),
-  title: z.string().optional(),
-  summary: z.string().optional(),
 });
 
 export async function POST(request: NextRequest) {

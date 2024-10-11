@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { useState } from "react";
 
@@ -16,6 +18,9 @@ export default function Header() {
           </Link>
           <Link href="/technology" className="text-sm font-medium hover:underline">
             Technology
+          </Link>
+          <Link href="/how-to-use" className="text-sm font-medium hover:underline">
+            How to use
           </Link>
           <Link href="/about" className="text-sm font-medium hover:underline">
             About us

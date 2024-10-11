@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
+import { url } from 'inspector';
 import { nanoid } from 'nanoid';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
@@ -6,8 +7,9 @@ import { z } from 'zod';
 // zod schema for the request body
 const schema = z.object({
   paper_id: z.number(),
-  user_id: z.number(),
+  paper_url: z.string().url(),
   prompt_id: z.number(),
+  user_id: z.number(),
 });
 
 export async function POST(request: NextRequest) {
@@ -34,12 +36,13 @@ export async function POST(request: NextRequest) {
 
   // Insert into the database using Supabase
   const { data, error } = await supabase
-    .from('paper_tracking_links')
+    .from('links')
     .insert([{
       public_id: publicId,
+      url: result.data.paper_url,
       user_id: result.data.user_id,
       paper_id: result.data.paper_id,
-      prompt_id: result.data.prompt_id
+      prompt_id: result.data.prompt_id,
     }])
     .select()
     .single();
@@ -51,7 +54,7 @@ export async function POST(request: NextRequest) {
 
   // Redirect the user to the URL associated with the paper
   return NextResponse.json({
-    data: { ...data, ...{ public_url: "https://ailluminator.com/link/" + publicId } }
+    data: { url: "https://ailluminator.com/link/" + publicId }
   }, { status: 201 });
 }
 
@@ -68,8 +71,8 @@ export async function GET(request: NextRequest) {
 
   // Insert into the database using Supabase
   const { data, error } = await supabase
-    .from('paper_tracking_links')
-    .select('id, public_id, paper_id, user_id, prompt_id')
+    .from('links')
+    .select('*')
 
   if (error) {
     console.error('Error inserting into paper_tracking_links:', error);

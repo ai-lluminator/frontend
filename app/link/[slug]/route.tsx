@@ -11,8 +11,8 @@ export async function GET(request: NextRequest, { params }: { params: { slug: st
 
   // read the slug from Supabase
   const { data, error } = await supabase
-    .from('paper_tracking_links')
-    .select('id, public_id, user_id, paper:papers(id, paper_url)')
+    .from('links')
+    .select('*')
     .eq('public_id', slug)
     .single();
 
@@ -22,16 +22,13 @@ export async function GET(request: NextRequest, { params }: { params: { slug: st
 
   try {
     await supabase
-      .from('paper_views')
-      // @ts-expect-error not properly detecting type
-      .insert([{ paper_id: data.paper.id, user_id: data.user_id }])
+      .from('link_views')
+      .insert([{ link_id: data.id }])
   } catch (error) {
     console.error('Error updating last_accessed_at:', error);
   }
 
-  // http://localhost:3001/link/y6qDNt
+  // http://localhost:3001/link/baw6e2
 
-  // @ts-expect-error not properly detecting type
-  return NextResponse.redirect(data!.paper.paper_url);
-  //return NextResponse.json({ url: });
+  return NextResponse.redirect(data.url);
 }
