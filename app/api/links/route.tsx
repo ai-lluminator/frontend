@@ -1,5 +1,4 @@
 import { createClient } from '@supabase/supabase-js';
-import { url } from 'inspector';
 import { nanoid } from 'nanoid';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
@@ -35,7 +34,7 @@ export async function POST(request: NextRequest) {
   const publicId = nanoid(6)
 
   // Insert into the database using Supabase
-  const { data, error } = await supabase
+  const { error } = await supabase
     .from('links')
     .insert([{
       public_id: publicId,
