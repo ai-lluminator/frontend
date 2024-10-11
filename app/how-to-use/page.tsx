@@ -8,7 +8,7 @@ export default function HowToUse() {
     <div>
       <Header />
 
-      <div className="prose">
+      <div className="prose max-w-screen-lg mx-auto px-4 py-12">
         <h1 id="telegram-bot-user-guide">Telegram Bot User Guide</h1>
         <p>This Telegram bot allows you to manage and preview research paper prompts. Here&#39;s how to use its features:</p>
         <h2 id="getting-started">Getting Started</h2>

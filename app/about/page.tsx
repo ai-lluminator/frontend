@@ -76,7 +76,9 @@ const AboutPage: React.FC = () => {
                   <div className="flex-none w-1/2 p-1">
                     <Image
                       className="w-full h-auto rounded"
-                      src="images/cowolff.jpeg"
+                      src="/images/cowolff.jpeg"
+                      width={300}
+                      height={300}
                       alt="Profile image of Cornelius Wolff"
                     />
                   </div>
@@ -112,7 +114,9 @@ const AboutPage: React.FC = () => {
                   <div className="flex-none w-1/2 p-1">
                     <Image
                       className="w-full h-auto rounded"
-                      src="images/thaerter.jpeg"
+                      src="/images/thaerter.jpeg"
+                      width={300}
+                      height={300}
                       alt="Profile image of Tom Härter"
                     />
                   </div>
