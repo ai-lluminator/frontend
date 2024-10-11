@@ -46,9 +46,9 @@ Authorization=TOKEN
 Authorization=TOKEN
 
 // Body
-{ id, paper_id: int, user_id: int, prompt_id: int, created_at, public_url }
+{ paper_id, paper_slug, prompt_id, user_id }
 
 // Response
-{ data: { id, public_id, paper_id, user_id, prompt_id }}
+{ data: { id, url }}
 ```
 
