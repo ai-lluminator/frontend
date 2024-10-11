@@ -43,14 +43,13 @@ builder:
 
 # Inject ENV variables into containers (secrets come from .kamal/secrets).
 #
-# env:
-#   clear:
-#     - DATABASE_HOST: db
-#     - DATABASE_USER: Ailluminator
-#     - DATABASE_NAME: papers
-#   secret:
-#     - DATABASE_PASSWORD: Avatar30.11
-#     - POSTGRES_PASSWORD
+env:
+  clear:
+    - NEXT_PUBLIC_SUPABASE_URL: db
+    - NEXT_PUBLIC_SUPABASE_ANON_KEY: Ailluminator
+  secret:
+    - SUPABASE_SERVICE_ROLE
+    - EXTERNAL_API_KEY
 
 # Aliases are triggered with "bin/kamal <alias>". You can overwrite arguments on invocation:
 # "bin/kamal logs -r job" will tail logs from the first server in the job section.
