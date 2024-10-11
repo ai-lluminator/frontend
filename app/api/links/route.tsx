@@ -10,7 +10,7 @@ const schema = z.object({
   prompt_id: z.number(),
 });
 
-export async function POST(request: NextRequest, { params }: { params: { slug: string } }) {
+export async function POST(request: NextRequest) {
   // Authentication
   const authHeader = request.headers.get('Authorization');
   if (!authHeader || authHeader !== process.env.EXTERNAL_API_KEY) {
@@ -55,7 +55,7 @@ export async function POST(request: NextRequest, { params }: { params: { slug: s
   }, { status: 201 });
 }
 
-export async function GET(request: NextRequest, { params }: { params: { slug: string } }) {
+export async function GET(request: NextRequest) {
   // Ensure the Authorization header is present and matches env.EXTERNAL_API_KEY
   const authHeader = request.headers.get('Authorization');
   if (!authHeader || authHeader !== process.env.EXTERNAL_API_KEY) {

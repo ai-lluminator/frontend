@@ -23,7 +23,7 @@ export async function GET(request: NextRequest, { params }: { params: { slug: st
   try {
     await supabase
       .from('paper_views')
-      // @ts-ignore
+      // @ts-expect-error not properly detecting type
       .insert([{ paper_id: data.paper.id, user_id: data.user_id }])
   } catch (error) {
     console.error('Error updating last_accessed_at:', error);
@@ -31,7 +31,7 @@ export async function GET(request: NextRequest, { params }: { params: { slug: st
 
   // http://localhost:3001/link/y6qDNt
 
-  // @ts-ignore
+  // @ts-expect-error not properly detecting type
   return NextResponse.redirect(data!.paper.paper_url);
   //return NextResponse.json({ url: });
 }

@@ -9,7 +9,7 @@ const paperSchema = z.object({
   summary: z.string().optional(),
 });
 
-export async function POST(request: NextRequest, { params }: { params: { slug: string } }) {
+export async function POST(request: NextRequest) {
   // Authentication
   const authHeader = request.headers.get('Authorization');
   if (!authHeader || authHeader !== process.env.EXTERNAL_API_KEY) {
@@ -45,7 +45,7 @@ export async function POST(request: NextRequest, { params }: { params: { slug: s
   return NextResponse.json({ data: data }, { status: 201 });
 }
 
-export async function GET(request: NextRequest, { params }: { params: { slug: string } }) {
+export async function GET(request: NextRequest) {
   // Authentication
   const authHeader = request.headers.get('Authorization');
   if (!authHeader || authHeader !== process.env.EXTERNAL_API_KEY) {
