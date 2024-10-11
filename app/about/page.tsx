@@ -74,7 +74,7 @@ const AboutPage: React.FC = () => {
                 </div>
                 <div className="flex flex-grow">
                   <div className="flex-none w-1/2 p-1">
-                    <img
+                    <Image
                       className="w-full h-auto rounded"
                       src="images/cowolff.jpeg"
                       alt="Profile image of Cornelius Wolff"
@@ -110,7 +110,7 @@ const AboutPage: React.FC = () => {
                 </div>
                 <div className="flex flex-grow">
                   <div className="flex-none w-1/2 p-1">
-                    <img
+                    <Image
                       className="w-full h-auto rounded"
                       src="images/thaerter.jpeg"
                       alt="Profile image of Tom Härter"
