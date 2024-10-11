@@ -45,8 +45,8 @@ builder:
 #
 env:
   clear:
-    - NEXT_PUBLIC_SUPABASE_URL: db
-    - NEXT_PUBLIC_SUPABASE_ANON_KEY: Ailluminator
+    NEXT_PUBLIC_SUPABASE_URL: db
+    NEXT_PUBLIC_SUPABASE_ANON_KEY: Ailluminator
   secret:
     - SUPABASE_SERVICE_ROLE
     - EXTERNAL_API_KEY
