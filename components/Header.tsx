@@ -27,11 +27,11 @@ export default function Header() {
           </Link>
         </nav>
         <div className="flex items-center space-x-4">
-          <a href="#" className="hidden md:inline-flex px-4 py-2 text-sm font-medium text-gray-900 bg-white rounded-md hover:bg-gray-50">
+          <a href="#" className="hidden md:inline-flex px-4 py-2 text-sm font-medium text-gray-900 bg-white rounded-md hover:bg-gray-50 text-center">
             Open Telegram bot
           </a>
           <button
-            className="md:hidden p-2 rounded-md hover:bg-gray-100"
+            className="md:hidden p-2 rounded-md"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           >
@@ -48,7 +48,7 @@ export default function Header() {
         </div>
       </div>
       {mobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-white border-b">
+        <div className="md:hidden absolute top-full left-0 right-0 gradient border-b">
           <nav className="container mx-auto px-4 py-4 flex flex-col space-y-4">
             <Link href="/" className="text-sm font-medium hover:underline">
               Home
