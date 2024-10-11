@@ -51,7 +51,7 @@ export async function POST(request: NextRequest, { params }: { params: { slug: s
 
   // Redirect the user to the URL associated with the paper
   return NextResponse.json({
-    data: { ...data, ...{ public_url: "https://ailluminator.com/links" + publicId } }
+    data: { ...data, ...{ public_url: "https://ailluminator.com/link/" + publicId } }
   }, { status: 201 });
 }
 

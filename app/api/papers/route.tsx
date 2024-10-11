@@ -1,5 +1,4 @@
 import { createClient } from '@supabase/supabase-js';
-import { nanoid } from 'nanoid';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 
@@ -29,8 +28,6 @@ export async function POST(request: NextRequest, { params }: { params: { slug: s
   if (!result.success) {
     return NextResponse.json({ error: result.error.message }, { status: 400 });
   }
-
-  const publicId = nanoid(6)
 
   // Insert into the database using Supabase
   const { data, error } = await supabase
@@ -63,8 +60,6 @@ export async function GET(request: NextRequest, { params }: { params: { slug: st
   const { data, error } = await supabase
     .from('papers')
     .select('*')
-
-  // prompt, paper, user
 
   if (error) {
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
