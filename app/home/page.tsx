@@ -54,9 +54,6 @@ const HomePage = () => {
               Using the power of AI, this free-to-use tool will help you keep track of the
               latest scientific literature in your field.
             </p>
-            <button className="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-              Open Telegram Bot
-            </button>
           </div>
           {/* Right Col */}
           <div className="w-full md:w-3/5 py-6 flex justify-end">

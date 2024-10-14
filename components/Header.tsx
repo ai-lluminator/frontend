@@ -27,7 +27,7 @@ export default function Header() {
           </Link>
         </nav>
         <div className="flex items-center space-x-4">
-          <a href="#" className="hidden md:inline-flex px-4 py-2 text-sm font-medium text-gray-900 bg-white rounded-md hover:bg-gray-50 text-center">
+          <a href="https://t.me/Ailuminator_bot" target="_blank" className="md:inline-flex px-4 py-2 text-sm font-medium text-gray-900 bg-white rounded-md hover:bg-gray-50 text-center">
             Open Telegram bot
           </a>
           <button
