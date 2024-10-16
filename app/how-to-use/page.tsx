@@ -11,7 +11,7 @@ export default function HowToUse() {
       style={{ fontFamily: "'Source Sans Pro', sans-serif" }}
     >
 
-    <title>AIlluminator - How to use</title>
+      <title>AIlluminator - How to use</title>
       <Header />
 
       {/* Hero Section */}
@@ -79,7 +79,7 @@ export default function HowToUse() {
               <div className="h-1 mx-auto bg-gradient-to-r from-purple-600 to-blue-400 w-64 opacity-25 my-0 py-0 rounded-t"></div>
             </div>
             <p className="text-gray-600 mb-8">
-              This Telegram bot allows you to manage and preview research paper prompts. Here's how to use its features:
+              This Telegram bot allows you to manage and preview research paper prompts. Here&apos;s how to use its features:
             </p>
             <h4 className="text-2xl text-gray-700 font-semibold mb-3">Getting Started</h4>
             <ol className="text-gray-600 mb-8 list-decimal list-inside">
@@ -128,7 +128,7 @@ export default function HowToUse() {
 
                 <div className="mb-6">
                   <h5 className="text-xl font-bold text-gray-700 mb-2"><code>/stop</code></h5>
-                  <p>Deletes your account and all associated data from the bot's database.</p>
+                  <p>Deletes your account and all associated data from the bot&apos;s database.</p>
                 </div>
               </div>
 
@@ -138,11 +138,11 @@ export default function HowToUse() {
               <li>When adding or previewing a prompt, make sure to include the prompt text after the command.</li>
               <li>You can have multiple prompts associated with your account.</li>
               <li>Use the preview feature to test out prompts before adding them to your regular query list.</li>
-              <li>If you're unsure about any feature, use the <code>/help</code> command for a quick reference of all available commands.</li>
+              <li>If you&apos;re unsure about any feature, use the <code>/help</code> command for a quick reference of all available commands.</li>
             </ul>
             <h4 className="text-2xl text-gray-700 font-semibold mb-3">Privacy</h4>
             <ul className="text-gray-600 list-disc list-inside">
-              <li>Your prompts and user data are stored securely in the bot's database.</li>
+              <li>Your prompts and user data are stored securely in the bot&apos;s database.</li>
               <li>You can delete your account at any time using the <code>/stop</code> command.</li>
             </ul>
             <p className="text-gray-600 mb-8">Enjoy using the Research Paper Prompt Bot!</p>

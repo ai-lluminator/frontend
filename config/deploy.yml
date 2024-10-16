@@ -7,7 +7,7 @@ image: ai-lluminator/frontend
 # Deploy to these servers.
 servers:
   web:
-    - 168.119.111.234
+    - 207.154.255.222
   # job:
   #   hosts:
   #     - 192.168.0.1
@@ -39,7 +39,7 @@ builder:
   arch:
     - amd64
   local: false
-  remote: ssh://root@168.119.111.234
+  remote: ssh://root@207.154.255.222
 
 # Inject ENV variables into containers (secrets come from .kamal/secrets).
 #
